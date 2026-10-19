@@ -1,0 +1,1623 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "0dd43bff-146b-42f0-8b11-c9b6b7fa9af1",
+   "metadata": {},
+   "source": [
+    "# bootcamp\n",
+    "\n",
+    "\n",
+    "## bootcamp learning goals\n",
+    "0. Create your GitHub repository and open a jupyter notebook (15 minutes)\n",
+    "1. Create, edit, and run Jupyter notebooks (15 minutes)\n",
+    "2. Assign and inspect variables (20 minutes)\n",
+    "3. Understand Python data types (10 minutes)\n",
+    "4. Create, index and manipulate containers (15 minutes)\n",
+    "5. Use functions and libraries (15 minutes)\n",
+    "6. Use numpy to compute with arrays and matrices (20 minutes)\n",
+    "7. Use Matplotlib to visualize data (20 minutes)\n",
+    "   \n",
+    "---\n",
+    "## How to use this notebook during class\n",
+    "- Follow along as we go\n",
+    "- Use your **Cards** to indicate where you're at:\n",
+    "    - A **🟩Green card** means you are caught up with Max and **ready to help your classmates**\n",
+    "    - A **🟥Red card** means you are stuck and need help\n",
+    "- <span style='color:red;'>EXERCISE</span> — work on this problem by yourself, or try with a partner if you get stuck\n",
+    "---\n",
+    "## Resources and more practice:\n",
+    "For this and many future exercises, you can find more guidance at the excellent **software carpentry** website\n",
+    "- https://swcarpentry.github.io/python-novice-gapminder/"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "171d8494-f581-40ea-88df-8de8f16f17c8",
+   "metadata": {},
+   "source": [
+    "# 1) Create, edit, and run Jupyter notebooks\n",
+    "- A notebook is a mix of **Markdown** (text) and **code** cells.\n",
+    "- Click a cell to select it. Press **Shift+Enter** (or the ▶️ button) to **run** it.\n",
+    "- To add a new cell: use the **+** buttoyn or press **B** (below) or **A** (above).\n",
+    "- To delete a cell: use the **🗑️** button on the right, or double-tap **D**\n",
+    "- To switch a cell to Markdown: press **M**. To code: press **Y**.\n",
+    "- Save your work frequently (**Ctrl/Cmd+S**).\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "d30670e2-f0fc-47b1-92b3-e78a0e22678f",
+   "metadata": {},
+   "source": [
+    "### Edit vs. Command mode\n",
+    "When a cell is **selected**, it has a blue bar to the left.\n",
+    "\n",
+    "A **selected** cell can be in one of two modes:\n",
+    "1. **Edit** mode: the cell is bounded by a blue box, and has a cursor in it. You can edit text in the cell like in any text editor\n",
+    "2. **Command** mode: you can run, move, and delete cells, but you can't type directly into the cell.\n",
+    "\n",
+    "adding text!\n",
+    "\n",
+    "#### To switch from **Edit** to **Command**: \n",
+    "- press **Esc** to switch to **Command** without running the cell\n",
+    "- or press **Shift+Enter** to run the cell and select the next cell in **Command** mode\n",
+    "\n",
+    "#### To switch from **Command** to **Edit**: \n",
+    "- Press **Enter** or **double click the cell**"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "26972e04",
+   "metadata": {},
+   "source": [
+    "### <span style='color:red;'>EXERCISE 1</span>: Add a Markdown note (2 minutes)\n",
+    "1. Insert a new cell *below* this one (press **B**).\n",
+    "2. Switch it to **Markdown** (press **M**).\n",
+    "3. Type a short note with a header, e.g. `# My first note`.\n",
+    "4. Run it (Shift+Enter).\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "456c2f14-f25f-403a-b170-e18e8d09ae32",
+   "metadata": {},
+   "source": [
+    "# This is a header"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "434551a2",
+   "metadata": {},
+   "source": [
+    "Now let's run some code"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 24,
+   "id": "757b4dde",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Hello!\n"
+     ]
+    }
+   ],
+   "source": [
+    "print('Hello!')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "cfda87c7-7e10-43de-acc6-1dce31a7da1a",
+   "metadata": {},
+   "source": [
+    "The above is **Python code**. You can also run some **bash** commands from within Jupyter. Sometimes this just works, as in:\n",
+    "\n",
+    "`pwd` (print working directory)\n",
+    "\n",
+    "but you may have to have a `!` prefix to tell Jupyter that what comes next is a bash command, as in:\n",
+    "\n",
+    "`!pwd`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "5d4cefbc-09e6-409b-a408-ffaf492887cc",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'/Users/mhturner/GitHub/ABIO558-Fall2026'"
+      ]
+     },
+     "execution_count": 2,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "pwd"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "71133d87-066c-4090-8cf9-3a3916f04ef2",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "bootcamp_blank.ipynb                LICENSE\n",
+      "bootcamp_setup.md                   miniproject_1_tutorial_blank.ipynb\n",
+      "grant_complete.csv                  README.md\n"
+     ]
+    }
+   ],
+   "source": [
+    "ls"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "51cd1691-8188-4195-a358-6864e8bd808c",
+   "metadata": {},
+   "source": [
+    "### Comments\n",
+    "Comments are bits of code that do not run, and are just for human eyes. Use comments to:\n",
+    "- Describe what your code is doing, or why\n",
+    "    - **Your most important code reader is your future self. Be kind to yourself and comment your code!**\n",
+    "- Add instructions to users for how to use the code\n",
+    "- (When developing code) temporarily hide/show bits of code that you are playing with and don't want to delete, or give yourself reminders or ToDo tasks\n",
+    "  \n",
+    "#### In python a comment is indicated by the # symbol\n",
+    "#### You can toggle between commented/uncommented for a whole line by pressing **Cmd+/** (Mac) or **Ctrl+/** (Windows)\n",
+    "\n",
+    "\n",
+    "Let's try writing some comments, and toggling between commented / uncommented..."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "a08dc505-d9dd-4dd9-b612-bc8d547d8b3c",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# print('Apples and bananas')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "cd8818eb",
+   "metadata": {},
+   "source": [
+    "## Running, restarting, and saving\n",
+    "- If things get messy, you can **Restart Kernel** (clears variables) and then **Run All**.\n",
+    "- You can also **Restart Kernel and Clear Outputs of All Cells** (under the **Kernel** file menu) to reset the notebook entirely.\n",
+    "- Save this notebook and consider exporting as HTML or PDF for your records (File → Export).\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "fb6b8916-b093-4b93-924e-73eec67cd9d6",
+   "metadata": {
+    "jp-MarkdownHeadingCollapsed": true
+   },
+   "source": [
+    "### Summary: Interacting with notebooks\n",
+    "- Use **markdown** to show nicely formatted text\n",
+    "- Use **code** to ... code\n",
+    "- Use **comments** to make your code more readable\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "4ae96a29",
+   "metadata": {},
+   "source": [
+    "# 2) Assign and inspect variables\n",
+    "ℹ️ A **variable** stores a value. In Python, you create a variable the first time you assign to it.\n",
+    "\n",
+    "**Rules of thumb**\n",
+    "- Use meaningful names: `temperature_c`, `subject_count`.\n",
+    "    - NOT: `x`, `variable`, `number`\n",
+    "    - **Be kind to your future self!**\n",
+    "- Names use letters, numbers, and underscores (and **cannot** start with a number).\n",
+    "- Python is case-sensitive: `Mass` ≠ `mass`.\n",
+    "\n",
+    "Let's define some variables, and then display them with print()\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "6d0d433f",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "22.5\n",
+      "100\n",
+      "w[118]\n",
+      "True\n"
+     ]
+    }
+   ],
+   "source": [
+    "temperature_c = 22.5\n",
+    "n_samples = 100\n",
+    "genotype = 'w[118]'\n",
+    "is_control = True\n",
+    "\n",
+    "print(temperature_c)\n",
+    "print(n_samples)\n",
+    "print(genotype)\n",
+    "print(is_control)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "0b4a07d0-cd32-4588-bde2-d1648c440a35",
+   "metadata": {},
+   "source": [
+    "#### Sounds obvious but: You must **assign** a variable before you **call** it\n",
+    "\n",
+    "Let's see what happens when you do it in the wrong order..."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "id": "6ba18624-aee1-4daf-ae03-71312d727f7a",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "C57BL/6\n"
+     ]
+    }
+   ],
+   "source": [
+    "strain = 'C57BL/6'\n",
+    "print(strain)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "2803a899-14cc-441c-9496-ee7a0efed457",
+   "metadata": {},
+   "source": [
+    "### <span style='color:red;'>EXERCISE 2</span>: Fix this bug! (2 min)\n",
+    "Change the code in the cell above 👆 to fix the bug and print the strain"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "e9e2b6c5-d734-40c6-ba2f-c4bee072be4a",
+   "metadata": {},
+   "source": [
+    "### Useful aside: String formatting\n",
+    "There are several methods to insert variables into a string. Let's practice one method called an **f-string**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "id": "4f718c7a-e860-490a-96ef-1878c8321fc3",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "My name is Max, I am 37 years old\n"
+     ]
+    }
+   ],
+   "source": [
+    "name = 'Max'\n",
+    "age = '37'\n",
+    "\n",
+    "message = f'My name is {name}, I am {age} years old'\n",
+    "print(message)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "f0940a65-9616-4665-8ce2-d80039834b34",
+   "metadata": {},
+   "source": [
+    "*Important note*: Re-assigning a variable updates its value"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "6617402d-019f-45b0-bb74-c5c062e0d9bd",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "n_samples = 10"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "id": "d9a331be",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "15\n"
+     ]
+    }
+   ],
+   "source": [
+    "n_samples = n_samples + 5\n",
+    "print(n_samples)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "0ae0444f-f8a7-4794-a598-5110e7d19672",
+   "metadata": {},
+   "source": [
+    "### Simple math\n",
+    "Python has basic math operations built in. \n",
+    "`+` `-` `*` `/`\n",
+    "\n",
+    "`**` - exponential"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "id": "bcc3a213-2228-42a5-a22f-dfccc5875b07",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "35\n"
+     ]
+    }
+   ],
+   "source": [
+    "weeks = 5\n",
+    "days = weeks * 7\n",
+    "print(days)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "id": "c542779c-04ce-4862-baab-6efb253874f0",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "225\n"
+     ]
+    }
+   ],
+   "source": [
+    "width = 15\n",
+    "area = width ** 2\n",
+    "print(area)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "87e329c8-a63c-457e-a5fd-f8b915a01add",
+   "metadata": {},
+   "source": [
+    "### <span style='color:red;'>EXERCISE 3</span>: What does // mean? (4 min)\n",
+    "There is an `//` operator - figure out what it does by inserting different numbers before and after it"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "id": "b7804d13-b770-4aed-a531-b50efa4ac774",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "1"
+      ]
+     },
+     "execution_count": 12,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "5 // 3"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "a076127c",
+   "metadata": {},
+   "source": [
+    "### Inspecting what is in memory\n",
+    "You can ask Python/IPython what's currently defined using the magic word %whos\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "id": "5326f08f",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Variable        Type     Data/Info\n",
+      "----------------------------------\n",
+      "age             str      37\n",
+      "area            int      225\n",
+      "days            int      35\n",
+      "genotype        str      w[118]\n",
+      "is_control      bool     True\n",
+      "message         str      My name is Max, I am 37 years old\n",
+      "n_samples       int      15\n",
+      "name            str      Max\n",
+      "strain          str      C57BL/6\n",
+      "temperature_c   float    22.5\n",
+      "weeks           int      5\n",
+      "width           int      15\n"
+     ]
+    }
+   ],
+   "source": [
+    "%whos"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "14ed56cb",
+   "metadata": {},
+   "source": [
+    "### <span style='color:red;'>EXERCISE 4</span>: Variables practice (6 min)\n",
+    "1. Create variables for a sample: `mass_g`, `volume_L`. Assign them numbers.\n",
+    "2. Compute density in g/L and store it in `density_g_per_L`.\n",
+    "3. Print a sentence summarizing the result with the units.\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "id": "9143e558-6654-483c-a0a8-a39e209f74b4",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Density = 9.950248756218906 g/L\n"
+     ]
+    }
+   ],
+   "source": [
+    "mass_g = 20\n",
+    "volume_L = 2.01\n",
+    "density_g_per_L = mass_g / volume_L\n",
+    "print(f'Density = {density_g_per_L} g/L')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "5f0acc88",
+   "metadata": {},
+   "source": [
+    "# 3) Inspect, understand, and convert Python data types\n",
+    "Common built-in scalar types we'll use today:\n",
+    "- `int` (integers), `float` (decimal numbers), `bool` (True/False), and `str` (text).\n",
+    "\n",
+    "Python variables are *dynamically* typed. This means that when you define a variable Python is smart and figures out what the data type should be. This is convenient but can be dangerous.\n",
+    "\n",
+    "Use `type(obj)` to check the type.\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "id": "b052839b",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "int"
+      ]
+     },
+     "execution_count": 15,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "a = 5\n",
+    "type(a)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "id": "c45b91a9-6e48-4f9a-9da2-92fbed0a4156",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "float"
+      ]
+     },
+     "execution_count": 16,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "b = 5.0\n",
+    "type(b)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "id": "b87ee419-56ee-4453-9065-5c07bdd4ac85",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "<class 'bool'>\n"
+     ]
+    }
+   ],
+   "source": [
+    "c = True\n",
+    "print(type(c))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "bd095354-6d02-47bb-8059-042b49cf57e7",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "id": "4e3b432d",
+   "metadata": {},
+   "source": [
+    "### Converting between types\n",
+    "You can convert between some data types using constructor functions: `int()`, `float()`, `str()`, `bool()`.\n",
+    "- Not every conversion is possible (e.g., `int('3.14')` raises an error).\n",
+    "- `bool(x)` is `False` for 0, 0.0, empty strings `''`, and empty containers; otherwise `True`.\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 18,
+   "id": "afc91964",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "42.0"
+      ]
+     },
+     "execution_count": 18,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "float('42')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 19,
+   "id": "b7244d65-3ff2-4fc8-a791-8b041bc2f655",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'3.14'"
+      ]
+     },
+     "execution_count": 19,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "str(3.14)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 20,
+   "id": "6b07105b-9731-4a80-9a1e-9007644a115e",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "5"
+      ]
+     },
+     "execution_count": 20,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "int(5.3)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "b1b83450",
+   "metadata": {},
+   "source": [
+    "### Booleans and comparisons\n",
+    "Comparison operators: `==`, `!=`, `<`, `<=`, `>`, `>=`.\n",
+    "Logical operators: `and`, `or`, `not`.\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 21,
+   "id": "7efb7f7e",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "False"
+      ]
+     },
+     "execution_count": 21,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "3 > 5"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 22,
+   "id": "1228a4a1-0a4a-457e-8f82-8af3f45b5ef8",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "True"
+      ]
+     },
+     "execution_count": 22,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "3 == 3"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 23,
+   "id": "745f3418",
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "SyntaxError",
+     "evalue": "invalid syntax (1917359732.py, line 1)",
+     "output_type": "error",
+     "traceback": [
+      "  \u001b[36mCell\u001b[39m\u001b[36m \u001b[39m\u001b[32mIn[23]\u001b[39m\u001b[32m, line 1\u001b[39m\n\u001b[31m    \u001b[39m\u001b[31m(3 <= 5) not (3 == 2)\u001b[39m\n                 ^\n\u001b[31mSyntaxError\u001b[39m\u001b[31m:\u001b[39m invalid syntax\n"
+     ]
+    }
+   ],
+   "source": [
+    "(3 <= 5) not (3 == 2)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "1790a33b-3612-446d-81ed-3f10ed0517ac",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "not False"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "f727990f",
+   "metadata": {},
+   "source": [
+    "### Strings: indexing, slicing, and methods\n",
+    "Strings are sequences of characters.\n",
+    "- Indexing: `s[0]` (first char); Slicing: `s[0:4]` (chars 0–3).\n",
+    "- Length: `len(s)`.\n",
+    "\n",
+    "Let's practice indexing into a string. You will be using indexing A LOT for other data types (like lists or arrays of numbers) later in the class. and the syntax is similar\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "52615535",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "c31ecda7-4570-4b62-a3b5-7e4b0c6d0f05",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "d83056b8-fb2d-409f-85bb-46638cc76c10",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "e0ac03b0-3221-4ff8-888e-95531504445e",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "id": "a907e124",
+   "metadata": {},
+   "source": [
+    "### <span style='color:red;'>EXERCISE 5</span>: Types & conversions (5 min)\n",
+    "Given the strings below, compute the force `F = m * a` and print a friendly summary.\n",
+    "\n",
+    "```python\n",
+    "mass_str = '12.5'      # grams\n",
+    "accel_str = '9.81'     # m/s^2\n",
+    "```\n",
+    "\n",
+    "Steps:\n",
+    "1. Convert both to floating-point numbers.\n",
+    "2. Convert mass to **kilograms** first (1 g = 0.001 kg).\n",
+    "3. Compute force in Newtons using F = m * a. A newton is 1 kg * m/s^2\n",
+    "4. Print a sentence displaying the computed force in N\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "7e64edea-cf1b-464e-aeee-7fd0ba268d47",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "id": "98a6cb67-9f89-4968-abfa-38772484855a",
+   "metadata": {},
+   "source": [
+    "# 4. Create, index and manipulate containers\n",
+    "\n",
+    "A **container** is a data structure that stores a collection of objects\n",
+    "\n",
+    "There are a few examples of containers, including:\n",
+    "- **string**: A container full of characters like \"hello\"\n",
+    "- **list**: A container full of whatever, separated by commas, like: [1, 2, 3.5, 50]\n",
+    "- **tuple**: a lot like a list but it is _immutable_ "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "ae7ff9e2-f360-4dd7-a7cb-89491c3128fd",
+   "metadata": {},
+   "source": [
+    "What can you do with a container? Here are two things:\n",
+    "1. Index to retrieve or change values\n",
+    "2. Math!\n",
+    "\n",
+    "Let's make a list and see what both of these look like:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "983ab050-9b79-422a-81b5-b87f3b92505d",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "my_list = [0, 8, 2, 4]\n",
+    "print(my_list)\n",
+    "type(my_list)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "620fbe4f-55dd-499b-bc16-4474089cd1a4",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "my_list[3]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "9f00c8ce-144a-4187-ba10-3aeb3e5b40e9",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "my_list[1:3]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "6bd77066-3fdb-4496-aa3e-928f21a6ca9e",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "my_list[1] = 100\n",
+    "print(my_list)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "b669e559-ce96-43b6-9e52-02464cefde9c",
+   "metadata": {},
+   "source": [
+    "Python has some built in math functions, too..."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "8284e393-3b4d-4f8f-b287-6062c59d223c",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "print(sum(my_list))\n",
+    "print(min(my_list))\n",
+    "print(len(my_list))\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "6aa68de2-f4c6-42db-80e9-7fb7826d64a7",
+   "metadata": {},
+   "source": [
+    "### <span style='color:red;'>EXERCISE 6</span>: LIST MATH (5 min)\n",
+    "Make a list of numbers and then write some code to compute the average of the values"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "ed014770-25ae-4e18-952c-e7fcddd1d03a",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "avg_value = sum(my_list) / len(my_list)\n",
+    "print(avg_value)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "21d4df85-cfac-4bf2-a583-be6b80816508",
+   "metadata": {},
+   "source": [
+    "# 5) Use functions and libraries\n",
+    "When you install Python, it includes a **built-in** set of **functions** and **libraries**\n",
+    "- A **function** is a bit of code that takes an input, does something with it, and returns an output\n",
+    "- A **library** is a collection of code that can dramatically extend the functionality Python\n",
+    "\n",
+    "A function uses parentheses () to input the **argument(s)**\n",
+    "\n",
+    "You already know (at least) one Python function from last time: print()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "7dfd4600-9e3c-418b-a8f5-41f661eb2bb4",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "len(my_list)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "2c5e5e42-2b82-4b89-98d3-dab6cf163988",
+   "metadata": {},
+   "source": [
+    "### Finding help for a function\n",
+    "1. use the help() function\n",
+    "2. Google it!"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "d20e4783-94ea-40ce-ae16-1918095133dd",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "help(sum)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "1874dc2c-6a59-40d0-84b8-99e911f754a2",
+   "metadata": {},
+   "source": [
+    "### Making your own function\n",
+    "\n",
+    "You can define your own functions! Let's see how that works..."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "ee3f64ed-e062-4c04-b213-6c2c9e416b7d",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def compute_average(list_values):\n",
+    "    avg_value = sum(list_values) / len(list_values)\n",
+    "    return avg_value\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "66915680-65f2-4302-9386-52f66275702b",
+   "metadata": {},
+   "source": [
+    "OK now let's use our new function"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "ec42fc8f-654f-49ae-809b-2edc5123d3a9",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "compute_average([20, 30, 100, 9])"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "a3c96e7c-7a4a-4ed3-be90-55ce2abba4a5",
+   "metadata": {},
+   "source": [
+    "OK cool our function works, but let's imagine someone else using it, or you using it weeks from now...\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "8377843e-85e4-4e0d-a09d-c29e0351febf",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def compute_average(list_values):\n",
+    "    \"\"\"\n",
+    "    Calculates the average of numbers in list_numbers\n",
+    "\n",
+    "    inputs: list_numbers, should be a list of numbers\n",
+    "    outputs: avg_value, scalar\n",
+    "    \n",
+    "    \"\"\"\n",
+    "    avg_value = sum(list_values) / len(list_values)\n",
+    "    return avg_value"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "b47ef347-0256-46c0-8f70-cf7ee189b8ad",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "help(compute_average)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "86cb6047-cb77-4c60-a4ed-6817179996ca",
+   "metadata": {},
+   "source": [
+    "** Good functions help the user understand how to use them, and prevent users from mis-using them. Let's improve our function with some **documentation** and some **input validation**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "2b6b290a-c63f-4d3d-a62e-016f22fe4e25",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "672fd0a2-b8cb-4105-9ad7-e4670bf6acd1",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "c8ec754d-4dd6-4d74-b3fe-685b48da3fae",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "id": "7f29c42e-c02d-451f-b4b2-d71b9a085e08",
+   "metadata": {},
+   "source": [
+    "## Libraries\n",
+    "Python doesn't have that many **built-in** **functions** - they are listed here:\n",
+    "https://docs.python.org/3/library/functions.html\n",
+    "\n",
+    "If this were all we were limited to, Python would not be very useful for the sciences\n",
+    "\n",
+    "Python is expandable because of **libraries**\n",
+    "To use a **library** you need to first **import** it"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "557614fe-26ef-4780-b012-745b90923ca7",
+   "metadata": {},
+   "source": [
+    "### Importing NumPy and Matplotlib\n",
+    "Let's import two community libraries:\n",
+    "- **numpy** is for numerical computing\n",
+    "- **Matplotlib** is for plotting\n",
+    "\n",
+    "These libraries must be installed before you can use them. If you are using the full Anaconda distribution, you should already have **numpy** and **matplotlib**, if not, you may need to install it\n",
+    "\n",
+    "We'll import numpy and the plotting module of matplotlib, called pyplot, with a shortcut variable to refer to them..."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 27,
+   "id": "249619d4-faf6-4bd9-a671-7165de274f2d",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Requirement already satisfied: numpy in /opt/miniconda3/envs/abio558/lib/python3.12/site-packages (2.5.4)\n",
+      "Note: you may need to restart the kernel to use updated packages.\n",
+      "Requirement already satisfied: matplotlib in /opt/miniconda3/envs/abio558/lib/python3.12/site-packages (3.11.2)\n",
+      "Requirement already satisfied: contourpy>=1.0.1 in /opt/miniconda3/envs/abio558/lib/python3.12/site-packages (from matplotlib) (1.4.0)\n",
+      "Requirement already satisfied: cycler>=0.10 in /opt/miniconda3/envs/abio558/lib/python3.12/site-packages (from matplotlib) (0.12.1)\n",
+      "Requirement already satisfied: fonttools>=4.28.2 in /opt/miniconda3/envs/abio558/lib/python3.12/site-packages (from matplotlib) (4.66.1)\n",
+      "Requirement already satisfied: kiwisolver>=1.3.1 in /opt/miniconda3/envs/abio558/lib/python3.12/site-packages (from matplotlib) (1.5.1)\n",
+      "Requirement already satisfied: numpy>=1.25 in /opt/miniconda3/envs/abio558/lib/python3.12/site-packages (from matplotlib) (2.5.4)\n",
+      "Requirement already satisfied: packaging>=20.0 in /opt/miniconda3/envs/abio558/lib/python3.12/site-packages (from matplotlib) (26.3)\n",
+      "Requirement already satisfied: pillow>=9 in /opt/miniconda3/envs/abio558/lib/python3.12/site-packages (from matplotlib) (12.3.0)\n",
+      "Requirement already satisfied: pyparsing>=3 in /opt/miniconda3/envs/abio558/lib/python3.12/site-packages (from matplotlib) (3.3.3)\n",
+      "Requirement already satisfied: python-dateutil>=2.7 in /opt/miniconda3/envs/abio558/lib/python3.12/site-packages (from matplotlib) (2.9.0.post0)\n",
+      "Requirement already satisfied: six>=1.5 in /opt/miniconda3/envs/abio558/lib/python3.12/site-packages (from python-dateutil>=2.7->matplotlib) (1.17.0)\n",
+      "Note: you may need to restart the kernel to use updated packages.\n"
+     ]
+    }
+   ],
+   "source": [
+    "%pip install numpy\n",
+    "%pip install matplotlib"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 28,
+   "id": "8aa23479-46bf-47c5-836f-ac521de6abcf",
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "import numpy as np\n",
+    "import matplotlib.pyplot as plt"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "e2319bb9-7885-428e-b969-8201beb874bf",
+   "metadata": {},
+   "source": [
+    "# 6) Use numpy to create and compute with arrays and matrices"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "1a20ea17-40d2-4e8e-ab2c-ce926df97b09",
+   "metadata": {},
+   "source": [
+    "### Using arrays in Numpy\n",
+    "One of the big advantages of Numpy is that it has built in data types called arrays, which can be 1D (like a vector) or n-dimensional (like a matrix)\n",
+    "\n",
+    "Let's start by making a 1D array..."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 29,
+   "id": "158cf021-8f5f-4ff9-abf2-1a2eae6e8e27",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[5 6 3 5 6 8]\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "np.float64(5.5)"
+      ]
+     },
+     "execution_count": 29,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "counts = np.array([5, 6, 3, 5, 6, 8])\n",
+    "print(counts)\n",
+    "type(counts)\n",
+    "np.mean(counts)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 30,
+   "id": "0bcdb312-b7b1-437b-af99-2b0cbe98c74a",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([5, 6])"
+      ]
+     },
+     "execution_count": 30,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "counts[0:2]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "b2238fef-e752-4e3d-bf18-1a8350820ea2",
+   "metadata": {},
+   "source": [
+    "Indexing into numpy arrays works much like with other containers like lists"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 32,
+   "id": "f938a90d-eb04-49bb-9cb0-8796572dfb78",
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "IndexError",
+     "evalue": "index 10 is out of bounds for axis 0 with size 6",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[31m---------------------------------------------------------------------------\u001b[39m",
+      "\u001b[31mIndexError\u001b[39m                                Traceback (most recent call last)",
+      "\u001b[36mCell\u001b[39m\u001b[36m \u001b[39m\u001b[32mIn[32]\u001b[39m\u001b[32m, line 1\u001b[39m\n\u001b[32m----> \u001b[39m\u001b[32m1\u001b[39m counts[\u001b[32m10\u001b[39m]\n",
+      "\u001b[31mIndexError\u001b[39m: index 10 is out of bounds for axis 0 with size 6"
+     ]
+    }
+   ],
+   "source": [
+    "counts[10]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "af2e5757-fdca-49ca-aa32-b8abfff69ab4",
+   "metadata": {},
+   "source": [
+    "numpy gives us access to tools for computations on our arrays"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "a0b4cec6-4d49-4ed9-ba89-7fab69c99732",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "id": "cf9f314d-be37-4d78-856a-3115ff0941df",
+   "metadata": {},
+   "source": [
+    "## <span style='color:red;'>EXERCISE 2</span>: LEARN NUMPY FUNCTIONS ON YOUR OWN (5 min)\n",
+    "Use the wonders of the internet, or your intuition, to figure out how to compute the **median** and **variance** of _counts_ using numpy functions"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 34,
+   "id": "c436b04c-ee65-4517-a4fa-2666d2450d3f",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "np.float64(2.25)"
+      ]
+     },
+     "execution_count": 34,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.var(counts)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "3bde4ca8-3cce-4fe0-890e-d1f53e81b041",
+   "metadata": {},
+   "source": [
+    "# A note about searching for help online...\n",
+    "\n",
+    "Just Google it. Or ask a chatbot.\n",
+    "\n",
+    "Don't google or ask Chat \"how do I do [complicated analysis pipeline] from start to finish\" but Google \"how do I compute this thing using Numpy\" or \"how do I use [this scipy function]\" and then TEST the answer that you get.\n",
+    "\n",
+    "In this class, a lot of the exercises and even miniprojects we do can be reasonably well done by a decent chatbot. But I want you to resist the urge to outsource the work to a LLM. By writing your own code, especially while you are learning, you will give yourself a chance to understand the data and the algorithms.\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "c13dfb22-7667-45d2-9b8d-16e40c1c4375",
+   "metadata": {},
+   "source": [
+    "## matrices (ndarrays)\n",
+    "Numpy also allows you to create matrices / n-dimensional arrays.\n",
+    "Let's create a matrix to see how they work..."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 35,
+   "id": "6c503c99-67e9-4fdc-8743-84ccdc6824f6",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[1 2 3]\n",
+      " [4 5 6]\n",
+      " [7 8 9]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "mat = np.array([[1, 2, 3],[4, 5, 6], [7, 8, 9]])\n",
+    "print(mat)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 37,
+   "id": "d25ce7df-6070-4e35-b63f-6ba67daca7e7",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "(3, 3)\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "np.int64(6)"
+      ]
+     },
+     "execution_count": 37,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "print(mat.shape)\n",
+    "mat[1, 2]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "999f0e0c-e436-43fa-ae88-856b149633c7",
+   "metadata": {},
+   "source": [
+    "## <span style='color:red;'>EXERCISE 3</span>: LEARN NUMPY FUNCTIONS ON YOUR OWN PT 2 (5 min)\n",
+    "Look up the numpy.mean() documentation to figure out how to compute the mean...\n",
+    "- across all rows (should be an array of length 3)\n",
+    "- across all columns (should be an array of length 4) \n",
+    "- across the whole matrix (should be a single, scalar number)\n",
+    "\n",
+    "https://numpy.org/doc/stable/reference/generated/numpy.mean.html"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "b0a25948-ce3e-4fe1-a695-6366f4b5c2ea",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "id": "387cb202-4791-42a6-ad97-061ada1d1cb7",
+   "metadata": {},
+   "source": [
+    "# 7) Use Matplotlib to visualize data\n",
+    "numpy has functions for generating pseudo-random numbers. Let's try one by plucking random numbers from a uniform distribution\n",
+    "\n",
+    "Then we'll use **pyplot** to plot a histogram. Note there are lots of ways to create figure and axis objects with pyplot but I will teach you what I think is the most explicit (and best) way..."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 46,
+   "id": "9386ac53-7bd0-468c-8e93-d03fea6130e4",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "Text(0, 0.5, 'Count')"
+      ]
+     },
+     "execution_count": 46,
+     "metadata": {},
+     "output_type": "execute_result"
+    },
+    {
+     "data": {
+      "image/png": "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",
+      "text/plain": [
+       "<Figure size 400x400 with 1 Axes>"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    }
+   ],
+   "source": [
+    "values = np.random.uniform(low=0, high=15, size=1000)\n",
+    "fh, ax = plt.subplots(1, 1, figsize=(4, 4))\n",
+    "ax.hist(values)\n",
+    "ax.set_xlabel('Random value')\n",
+    "ax.set_ylabel('Count')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "e0a642d2-7721-4163-ace4-077d35257ce4",
+   "metadata": {},
+   "source": [
+    "## <span style='color:red;'>EXERCISE 4</span>: LEARN NUMPY FUNCTIONS ON YOUR OWN PT 3 (5 min)\n",
+    "Look up the documentation for numpy.random distributions to see what random distributions numpy can draw from. Pick a distribution and some parameters, and then plot a histogram of 1000 draws from that distribution\n",
+    "\n",
+    "https://numpy.org/doc/2.1/reference/random/generator.html#distributions"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "f43357fd-ead6-4447-a601-f31f9666dc86",
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "id": "4d45e7d4-7a96-46d0-8852-6e1fb00b9e6c",
+   "metadata": {},
+   "source": [
+    "## BONUS: Modeling bacterial growth\n",
+    "\n",
+    "You are growing E. coli in a flask, and you measure optical density of the bacterial suspension using a spectrophotometer every 30 minutes for 5 hours.\n",
+    "The optical density is directly related to the number of bacteria in the suspension"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "443fd6cb-5a25-4542-aa66-df2b1324678f",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "time_points = np.array([0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5])\n",
+    "optical_density = [30, 45, 92, 198, 404, 838, 1705, 3120, 3780, 4100, 4400]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "741ef1f6-ff9d-4a17-a3bd-898eddb39d44",
+   "metadata": {},
+   "source": [
+    "Let's plot the data using **pyplot**\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "de213f35-e873-4ea9-a216-f8e25bb6ea48",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "id": "6e543f5d-c181-4ee9-bbe5-ba8d98b79466",
+   "metadata": {},
+   "source": [
+    "Part of this growth curve is the **exponential phase**, where the number of bacteria double at regular intervals. This interval is called the doubling time\n",
+    "\n",
+    "**N(t) = N_0 * 2^(t/T_d)**\n",
+    "- N(t) is the number of bacteria as a function of time, t\n",
+    "- N_0 is the initial number of bacteria\n",
+    "- T_d is the doubling time"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "1ed46726-00ce-4427-8351-65f0c751b6bf",
+   "metadata": {},
+   "source": [
+    "\n",
+    "Let's transform our optical density by log2...\n",
+    "This makes our equation\n",
+    "\n",
+    "Log2(N(t)) = Log2(N_0) + t/T_D\n",
+    "\n",
+    "which is linear, of the form Y = mx + b, where the **slope m = 1/T_d**\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "283fb5b3-e49f-4fd4-befd-9c11dee4a44f",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "id": "364e5976-8b32-4329-9bcd-11834630b39c",
+   "metadata": {},
+   "source": [
+    "Now we're going to fit a line to our log-transformed data to estimate the doubling time. First note that the exponential phase is between about 0.5 and 3 hours..."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "2f28c4c7-72fa-43c8-9e39-a7975758d95c",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "c806a1b4-17db-47f8-95bf-f764fdae63fc",
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "b5491d11-bfe5-4b5e-9050-ba3132927c2c",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.12.14"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

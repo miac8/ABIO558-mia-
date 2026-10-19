@@ -1,0 +1,968 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "47f50eae-6f41-4b28-9488-b72c216aab4d",
+   "metadata": {},
+   "source": [
+    "# Miniproject 1 - tutorial\n",
+    "\n",
+    "### Learning goals for today\n",
+    "1. Understand how to load, index and query data using Pandas\n",
+    "2. Use scipy to perform hypothesis testing\n",
+    "3. Use scikit-learn to build, train, and test machine learning models for classification\n",
+    "\n",
+    "---\n",
+    "### How to use this notebook during class\n",
+    "- Follow along as we go\n",
+    "- Use your **Cards** to indicate where you're at:\n",
+    "    - A **🟩Green card** means you are caught up with Max and **ready to help your classmates**\n",
+    "    - A **🟥Red card** means you are stuck and need help\n",
+    "- <span style='color:red;'>EXERCISE</span> — work on this problem by yourself, or try with a partner if you get stuck\n",
+    "---\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "920cdde1-1041-4586-9de2-ccbc817e89ea",
+   "metadata": {},
+   "source": [
+    "First let's import some libraries we will use today. Remember if you don't have a library installed you can pip install it with:\n",
+    "\n",
+    "!pip install *package_name*"
+   ]
+  },
+  {
+   "cell_type": "code",
+<<<<<<< HEAD
+   "execution_count": 8,
+=======
+   "execution_count": 4,
+>>>>>>> 230fe0b6fb0e32687af0c63e7d3f685a5d97bb15
+   "id": "7487d9fb-4ba7-409a-9ba5-5781e2aef825",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import numpy as np\n",
+    "import matplotlib.pyplot as plt\n",
+    "import pandas as pd\n",
+    "import seaborn as sns\n",
+    "from scipy import stats"
+   ]
+  },
+  {
+   "cell_type": "code",
+<<<<<<< HEAD
+   "execution_count": 6,
+   "id": "aa443110-aa44-461b-8355-43a36de7cd24",
+   "metadata": {},
+=======
+   "execution_count": 2,
+   "id": "aa443110-aa44-461b-8355-43a36de7cd24",
+   "metadata": {
+    "collapsed": true,
+    "jupyter": {
+     "outputs_hidden": true
+    }
+   },
+>>>>>>> 230fe0b6fb0e32687af0c63e7d3f685a5d97bb15
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+<<<<<<< HEAD
+      "Collecting scipy\n",
+      "  Downloading scipy-1.18.1-cp314-cp314-macosx_14_0_arm64.whl.metadata (62 kB)\n",
+      "Requirement already satisfied: numpy<2.8,>=2.0.0 in /opt/miniconda3/lib/python3.14/site-packages (from scipy) (2.5.3)\n",
+      "Downloading scipy-1.18.1-cp314-cp314-macosx_14_0_arm64.whl (20.5 MB)\n",
+      "\u001b[2K   \u001b[38;2;114;156;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m20.5/20.5 MB\u001b[0m \u001b[31m14.3 MB/s\u001b[0m  \u001b[33m0:00:01\u001b[0m5.8 MB/s\u001b[0m eta \u001b[36m0:00:01\u001b[0m01\u001b[0m\n",
+      "\u001b[?25hInstalling collected packages: scipy\n",
+      "Successfully installed scipy-1.18.1\n"
+=======
+      "Requirement already satisfied: seaborn in /opt/miniconda3/envs/abio558/lib/python3.12/site-packages (0.13.2)\n",
+      "Requirement already satisfied: numpy!=1.24.0,>=1.20 in /opt/miniconda3/envs/abio558/lib/python3.12/site-packages (from seaborn) (2.5.4)\n",
+      "Requirement already satisfied: pandas>=1.2 in /opt/miniconda3/envs/abio558/lib/python3.12/site-packages (from seaborn) (3.0.6)\n",
+      "Requirement already satisfied: matplotlib!=3.6.1,>=3.4 in /opt/miniconda3/envs/abio558/lib/python3.12/site-packages (from seaborn) (3.11.2)\n",
+      "Requirement already satisfied: contourpy>=1.0.1 in /opt/miniconda3/envs/abio558/lib/python3.12/site-packages (from matplotlib!=3.6.1,>=3.4->seaborn) (1.4.0)\n",
+      "Requirement already satisfied: cycler>=0.10 in /opt/miniconda3/envs/abio558/lib/python3.12/site-packages (from matplotlib!=3.6.1,>=3.4->seaborn) (0.12.1)\n",
+      "Requirement already satisfied: fonttools>=4.28.2 in /opt/miniconda3/envs/abio558/lib/python3.12/site-packages (from matplotlib!=3.6.1,>=3.4->seaborn) (4.66.1)\n",
+      "Requirement already satisfied: kiwisolver>=1.3.1 in /opt/miniconda3/envs/abio558/lib/python3.12/site-packages (from matplotlib!=3.6.1,>=3.4->seaborn) (1.5.1)\n",
+      "Requirement already satisfied: packaging>=20.0 in /opt/miniconda3/envs/abio558/lib/python3.12/site-packages (from matplotlib!=3.6.1,>=3.4->seaborn) (26.3)\n",
+      "Requirement already satisfied: pillow>=9 in /opt/miniconda3/envs/abio558/lib/python3.12/site-packages (from matplotlib!=3.6.1,>=3.4->seaborn) (12.3.0)\n",
+      "Requirement already satisfied: pyparsing>=3 in /opt/miniconda3/envs/abio558/lib/python3.12/site-packages (from matplotlib!=3.6.1,>=3.4->seaborn) (3.3.3)\n",
+      "Requirement already satisfied: python-dateutil>=2.7 in /opt/miniconda3/envs/abio558/lib/python3.12/site-packages (from matplotlib!=3.6.1,>=3.4->seaborn) (2.9.0.post0)\n",
+      "Requirement already satisfied: six>=1.5 in /opt/miniconda3/envs/abio558/lib/python3.12/site-packages (from python-dateutil>=2.7->matplotlib!=3.6.1,>=3.4->seaborn) (1.17.0)\n"
+>>>>>>> 230fe0b6fb0e32687af0c63e7d3f685a5d97bb15
+     ]
+    }
+   ],
+   "source": [
+<<<<<<< HEAD
+    "!pip install scipy"
+=======
+    "!pip install seaborn"
+>>>>>>> 230fe0b6fb0e32687af0c63e7d3f685a5d97bb15
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "3ccaf4af-e00c-4611-9113-9797d2b6d38b",
+   "metadata": {},
+   "source": [
+    "## 1) Visualizing lots of data\n",
+    "\n",
+    "This data is originally from Peter & Rosemary Grant's book on Darwin's finches: https://search.worldcat.org/title/854285415\n",
+    "\n",
+    "And I got it from Justin Bois' great programming for biological sciences bootcamp: \n",
+    "https://github.com/justinbois/bootcamp\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+<<<<<<< HEAD
+   "execution_count": 10,
+=======
+   "execution_count": 9,
+>>>>>>> 230fe0b6fb0e32687af0c63e7d3f685a5d97bb15
+   "id": "99442c36-35ea-4636-b325-6bffb2975f31",
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>band</th>\n",
+       "      <th>beak depth (mm)</th>\n",
+       "      <th>beak length (mm)</th>\n",
+       "      <th>species</th>\n",
+       "      <th>year</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>0</th>\n",
+       "      <td>20123</td>\n",
+       "      <td>8.05</td>\n",
+       "      <td>9.25</td>\n",
+       "      <td>fortis</td>\n",
+       "      <td>1973</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>1</th>\n",
+       "      <td>20126</td>\n",
+       "      <td>10.45</td>\n",
+       "      <td>11.35</td>\n",
+       "      <td>fortis</td>\n",
+       "      <td>1973</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <td>20128</td>\n",
+       "      <td>9.55</td>\n",
+       "      <td>10.15</td>\n",
+       "      <td>fortis</td>\n",
+       "      <td>1973</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>3</th>\n",
+       "      <td>20129</td>\n",
+       "      <td>8.75</td>\n",
+       "      <td>9.95</td>\n",
+       "      <td>fortis</td>\n",
+       "      <td>1973</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4</th>\n",
+       "      <td>20133</td>\n",
+       "      <td>10.15</td>\n",
+       "      <td>11.55</td>\n",
+       "      <td>fortis</td>\n",
+       "      <td>1973</td>\n",
+       "    </tr>\n",
+<<<<<<< HEAD
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "    band  beak depth (mm)  beak length (mm) species  year\n",
+       "0  20123             8.05              9.25  fortis  1973\n",
+       "1  20126            10.45             11.35  fortis  1973\n",
+       "2  20128             9.55             10.15  fortis  1973\n",
+       "3  20129             8.75              9.95  fortis  1973\n",
+       "4  20133            10.15             11.55  fortis  1973"
+      ]
+     },
+     "execution_count": 10,
+=======
+       "    <tr>\n",
+       "      <th>...</th>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2294</th>\n",
+       "      <td>21295</td>\n",
+       "      <td>9.30</td>\n",
+       "      <td>14.20</td>\n",
+       "      <td>scandens</td>\n",
+       "      <td>2012</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2295</th>\n",
+       "      <td>21297</td>\n",
+       "      <td>9.80</td>\n",
+       "      <td>13.00</td>\n",
+       "      <td>scandens</td>\n",
+       "      <td>2012</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2296</th>\n",
+       "      <td>21340</td>\n",
+       "      <td>8.90</td>\n",
+       "      <td>14.60</td>\n",
+       "      <td>scandens</td>\n",
+       "      <td>2012</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2297</th>\n",
+       "      <td>21342</td>\n",
+       "      <td>9.80</td>\n",
+       "      <td>13.10</td>\n",
+       "      <td>scandens</td>\n",
+       "      <td>2012</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2298</th>\n",
+       "      <td>21347</td>\n",
+       "      <td>9.10</td>\n",
+       "      <td>15.20</td>\n",
+       "      <td>scandens</td>\n",
+       "      <td>2012</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "<p>2299 rows × 5 columns</p>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "       band  beak depth (mm)  beak length (mm)   species  year\n",
+       "0     20123             8.05              9.25    fortis  1973\n",
+       "1     20126            10.45             11.35    fortis  1973\n",
+       "2     20128             9.55             10.15    fortis  1973\n",
+       "3     20129             8.75              9.95    fortis  1973\n",
+       "4     20133            10.15             11.55    fortis  1973\n",
+       "...     ...              ...               ...       ...   ...\n",
+       "2294  21295             9.30             14.20  scandens  2012\n",
+       "2295  21297             9.80             13.00  scandens  2012\n",
+       "2296  21340             8.90             14.60  scandens  2012\n",
+       "2297  21342             9.80             13.10  scandens  2012\n",
+       "2298  21347             9.10             15.20  scandens  2012\n",
+       "\n",
+       "[2299 rows x 5 columns]"
+      ]
+     },
+     "execution_count": 9,
+>>>>>>> 230fe0b6fb0e32687af0c63e7d3f685a5d97bb15
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "beak_df = pd.read_csv('grant_complete.csv')\n",
+<<<<<<< HEAD
+    "beak_df.head()"
+=======
+    "beak_df"
+>>>>>>> 230fe0b6fb0e32687af0c63e7d3f685a5d97bb15
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "6688ed04-74dc-4753-89ea-30a17a7b0629",
+   "metadata": {},
+   "source": [
+    "There are two species in this dataset: *fortis* and *scandens*\n",
+    "\n",
+    "Let's just pull out a subset of the data that we are interested in: for example, data from **fortis** in the year **2012**\n",
+    "\n",
+    "There are (at least) two ways to do this, the first is the one we have used already:\n",
+    "1. The **query()** function\n",
+    "2. **.loc boolean indexing**\n",
+    "\n",
+    "Let's see how each of these works"
+   ]
+  },
+  {
+   "cell_type": "code",
+<<<<<<< HEAD
+   "execution_count": 11,
+=======
+   "execution_count": 8,
+>>>>>>> 230fe0b6fb0e32687af0c63e7d3f685a5d97bb15
+   "id": "699a4319-21c0-46e2-aff0-92ffd1222d95",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>band</th>\n",
+       "      <th>beak depth (mm)</th>\n",
+       "      <th>beak length (mm)</th>\n",
+       "      <th>species</th>\n",
+       "      <th>year</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>2052</th>\n",
+       "      <td>19022</td>\n",
+       "      <td>8.5</td>\n",
+       "      <td>10.0</td>\n",
+       "      <td>fortis</td>\n",
+       "      <td>2012</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2053</th>\n",
+       "      <td>19028</td>\n",
+       "      <td>8.9</td>\n",
+       "      <td>12.5</td>\n",
+       "      <td>fortis</td>\n",
+       "      <td>2012</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2054</th>\n",
+       "      <td>19032</td>\n",
+       "      <td>7.5</td>\n",
+       "      <td>9.3</td>\n",
+       "      <td>fortis</td>\n",
+       "      <td>2012</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2055</th>\n",
+       "      <td>19041</td>\n",
+       "      <td>9.6</td>\n",
+       "      <td>10.3</td>\n",
+       "      <td>fortis</td>\n",
+       "      <td>2012</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2056</th>\n",
+       "      <td>19044</td>\n",
+       "      <td>9.2</td>\n",
+       "      <td>11.0</td>\n",
+       "      <td>fortis</td>\n",
+       "      <td>2012</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>...</th>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2168</th>\n",
+       "      <td>21299</td>\n",
+       "      <td>7.8</td>\n",
+       "      <td>10.4</td>\n",
+       "      <td>fortis</td>\n",
+       "      <td>2012</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2169</th>\n",
+       "      <td>21341</td>\n",
+       "      <td>8.5</td>\n",
+       "      <td>10.5</td>\n",
+       "      <td>fortis</td>\n",
+       "      <td>2012</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2170</th>\n",
+       "      <td>21343</td>\n",
+       "      <td>8.2</td>\n",
+       "      <td>10.1</td>\n",
+       "      <td>fortis</td>\n",
+       "      <td>2012</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2171</th>\n",
+       "      <td>21349</td>\n",
+       "      <td>9.2</td>\n",
+       "      <td>10.6</td>\n",
+       "      <td>fortis</td>\n",
+       "      <td>2012</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2172</th>\n",
+       "      <td>22000</td>\n",
+       "      <td>9.0</td>\n",
+       "      <td>10.6</td>\n",
+       "      <td>fortis</td>\n",
+       "      <td>2012</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "<p>121 rows × 5 columns</p>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "       band  beak depth (mm)  beak length (mm) species  year\n",
+       "2052  19022              8.5              10.0  fortis  2012\n",
+       "2053  19028              8.9              12.5  fortis  2012\n",
+       "2054  19032              7.5               9.3  fortis  2012\n",
+       "2055  19041              9.6              10.3  fortis  2012\n",
+       "2056  19044              9.2              11.0  fortis  2012\n",
+       "...     ...              ...               ...     ...   ...\n",
+       "2168  21299              7.8              10.4  fortis  2012\n",
+       "2169  21341              8.5              10.5  fortis  2012\n",
+       "2170  21343              8.2              10.1  fortis  2012\n",
+       "2171  21349              9.2              10.6  fortis  2012\n",
+       "2172  22000              9.0              10.6  fortis  2012\n",
+       "\n",
+       "[121 rows x 5 columns]"
+      ]
+     },
+<<<<<<< HEAD
+     "execution_count": 11,
+=======
+     "execution_count": 8,
+>>>>>>> 230fe0b6fb0e32687af0c63e7d3f685a5d97bb15
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "beak_df.query('species == \"fortis\" & year == 2012')"
+   ]
+  },
+  {
+   "cell_type": "code",
+<<<<<<< HEAD
+   "execution_count": 13,
+=======
+   "execution_count": 10,
+>>>>>>> 230fe0b6fb0e32687af0c63e7d3f685a5d97bb15
+   "id": "3202e3e7-ec05-4255-8ccb-108e8cccf5b7",
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>band</th>\n",
+       "      <th>beak depth (mm)</th>\n",
+       "      <th>beak length (mm)</th>\n",
+       "      <th>species</th>\n",
+       "      <th>year</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>2052</th>\n",
+       "      <td>19022</td>\n",
+       "      <td>8.5</td>\n",
+       "      <td>10.0</td>\n",
+       "      <td>fortis</td>\n",
+       "      <td>2012</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2053</th>\n",
+       "      <td>19028</td>\n",
+       "      <td>8.9</td>\n",
+       "      <td>12.5</td>\n",
+       "      <td>fortis</td>\n",
+       "      <td>2012</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2054</th>\n",
+       "      <td>19032</td>\n",
+       "      <td>7.5</td>\n",
+       "      <td>9.3</td>\n",
+       "      <td>fortis</td>\n",
+       "      <td>2012</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2055</th>\n",
+       "      <td>19041</td>\n",
+       "      <td>9.6</td>\n",
+       "      <td>10.3</td>\n",
+       "      <td>fortis</td>\n",
+       "      <td>2012</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2056</th>\n",
+       "      <td>19044</td>\n",
+       "      <td>9.2</td>\n",
+       "      <td>11.0</td>\n",
+       "      <td>fortis</td>\n",
+       "      <td>2012</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>...</th>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2168</th>\n",
+       "      <td>21299</td>\n",
+       "      <td>7.8</td>\n",
+       "      <td>10.4</td>\n",
+       "      <td>fortis</td>\n",
+       "      <td>2012</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2169</th>\n",
+       "      <td>21341</td>\n",
+       "      <td>8.5</td>\n",
+       "      <td>10.5</td>\n",
+       "      <td>fortis</td>\n",
+       "      <td>2012</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2170</th>\n",
+       "      <td>21343</td>\n",
+       "      <td>8.2</td>\n",
+       "      <td>10.1</td>\n",
+       "      <td>fortis</td>\n",
+       "      <td>2012</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2171</th>\n",
+       "      <td>21349</td>\n",
+       "      <td>9.2</td>\n",
+       "      <td>10.6</td>\n",
+       "      <td>fortis</td>\n",
+       "      <td>2012</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2172</th>\n",
+       "      <td>22000</td>\n",
+       "      <td>9.0</td>\n",
+       "      <td>10.6</td>\n",
+       "      <td>fortis</td>\n",
+       "      <td>2012</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "<p>121 rows × 5 columns</p>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "       band  beak depth (mm)  beak length (mm) species  year\n",
+       "2052  19022              8.5              10.0  fortis  2012\n",
+       "2053  19028              8.9              12.5  fortis  2012\n",
+       "2054  19032              7.5               9.3  fortis  2012\n",
+       "2055  19041              9.6              10.3  fortis  2012\n",
+       "2056  19044              9.2              11.0  fortis  2012\n",
+       "...     ...              ...               ...     ...   ...\n",
+       "2168  21299              7.8              10.4  fortis  2012\n",
+       "2169  21341              8.5              10.5  fortis  2012\n",
+       "2170  21343              8.2              10.1  fortis  2012\n",
+       "2171  21349              9.2              10.6  fortis  2012\n",
+       "2172  22000              9.0              10.6  fortis  2012\n",
+       "\n",
+       "[121 rows x 5 columns]"
+      ]
+     },
+<<<<<<< HEAD
+     "execution_count": 13,
+=======
+     "execution_count": 10,
+>>>>>>> 230fe0b6fb0e32687af0c63e7d3f685a5d97bb15
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "beak_df.loc[(beak_df['species']==\"fortis\") & (beak_df['year']==2012)]"
+   ]
+  },
+  {
+   "attachments": {},
+   "cell_type": "markdown",
+   "id": "7dbd2f16-96ce-4863-8f68-513702ea185b",
+   "metadata": {},
+   "source": [
+    "### <span style='color:red;'>EXERCISE 1</span>: Compute descriptive statistics  (7 min)\n",
+    "\n",
+    "Compute the mean beak length and depth for each species.\n",
+    "\n",
+    "Google it! Look at documentation, stack overflow, or LLM output E.g. \"pandas compute mean of column\"\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+<<<<<<< HEAD
+   "execution_count": 17,
+=======
+   "execution_count": 11,
+>>>>>>> 230fe0b6fb0e32687af0c63e7d3f685a5d97bb15
+   "id": "9194b453-043f-47aa-9b99-318408054ea3",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "10.810765815760266\n"
+     ]
+    }
+   ],
+   "source": [
+    "# several lines of code\n",
+    "fortis_length = beak_df.query('species == \"fortis\"')['beak length (mm)'].mean()\n",
+<<<<<<< HEAD
+    "print(fortis_length)\n",
+    "\n"
+=======
+    "print(fortis_length)"
+>>>>>>> 230fe0b6fb0e32687af0c63e7d3f685a5d97bb15
+   ]
+  },
+  {
+   "cell_type": "code",
+<<<<<<< HEAD
+   "execution_count": 18,
+=======
+   "execution_count": 13,
+>>>>>>> 230fe0b6fb0e32687af0c63e7d3f685a5d97bb15
+   "id": "6aa75865-b1d4-4a0b-8c4f-717143c0b483",
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>band</th>\n",
+       "      <th>beak depth (mm)</th>\n",
+       "      <th>beak length (mm)</th>\n",
+       "      <th>year</th>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>species</th>\n",
+       "      <th></th>\n",
+       "      <th></th>\n",
+       "      <th></th>\n",
+       "      <th></th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>fortis</th>\n",
+       "      <td>12719.828524</td>\n",
+       "      <td>9.233984</td>\n",
+       "      <td>10.810766</td>\n",
+       "      <td>1987.163707</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>scandens</th>\n",
+       "      <td>13033.162978</td>\n",
+       "      <td>9.116680</td>\n",
+       "      <td>13.941751</td>\n",
+       "      <td>1991.688129</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "                  band  beak depth (mm)  beak length (mm)         year\n",
+       "species                                                               \n",
+       "fortis    12719.828524         9.233984         10.810766  1987.163707\n",
+       "scandens  13033.162978         9.116680         13.941751  1991.688129"
+      ]
+     },
+<<<<<<< HEAD
+     "execution_count": 18,
+=======
+     "execution_count": 13,
+>>>>>>> 230fe0b6fb0e32687af0c63e7d3f685a5d97bb15
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# one line of code, with groupby() function\n",
+    "beak_df.groupby('species').agg('mean')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "3a88f228-2103-4643-8cbd-e69b17704f22",
+   "metadata": {},
+   "source": [
+    "### Visualizing beak size data\n",
+    "Let's see if we can see a difference between these species using a scatter plot"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "d037e85c-f421-4e65-904a-2a3a8fcf5a32",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "id": "16d35d50-2996-456d-a5e4-6f8753d6c4db",
+   "metadata": {},
+   "source": [
+    "There are lots of datapoints here, so let's try to visualize the distributions a bit better using a **jointplot**, which shows the points as well as marginal distributions on the sides"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "9f9c4c8f-1b0b-4da4-a9a2-496813c4fd51",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "id": "d3068879-78c4-4ff0-87af-95c5aa3a26f4",
+   "metadata": {},
+   "source": [
+    "### <span style='color:red;'>EXERCISE 2</span>: Test the hypothesis that scandens has a longer beak than fortis (10 min)\n",
+    "Use scipy.stats.mannwhitneyu() to perform a hypothesis test to compare beak lenght between the two species\n",
+    "\n",
+    "https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.mannwhitneyu.html\n",
+    "\n",
+    "*Hint:\n",
+    "It will be cleaner to first assign new variables for the two groups you are comparing, call them\n",
+    "\n",
+    "`beak_len_fortis`\n",
+    "\n",
+    "`beak_len_scandens`\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "30d8f4df-ac31-4672-ba5e-01c3ccd2e04a",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "id": "a70c8a0d-18e8-42cb-8be5-4cc62b6c6806",
+   "metadata": {},
+   "source": [
+    "We can use **seaborn** to make all kinds of plots using dataframes"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "7a7f04f7-1d55-431c-a018-b40d07c24bc6",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "id": "f4703d2a-16b6-4647-9360-4a4f7096b93c",
+   "metadata": {},
+   "source": [
+    "## 2) Machine learning classification\n",
+    "\n",
+    "The beak size distributions are pretty non-overlapping, which suggests that we should be able to predict the species based on beak measurements alone. One way to do this is with a classifier model.\n",
+    "\n",
+    "We are going to use a simple, commmon model called a **Support Vector Machine (SVM)**.\n",
+    "\n",
+    "let's install / import the python machine learning library scikit-learn\n",
+    "\n",
+    "%pip install scikit-learn\n",
+    "\n",
+    "\n",
+    "sklearn has an implementation of an SVM for classification called a **Support Vector Classifier (SVC)**\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "67aa134b-c7e2-4077-b6da-1da2432e7a81",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "%pip install scikit-learn"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "d344a68f-aca2-4772-ba0c-f804b59f51e3",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "from sklearn.svm import SVC\n",
+    "from sklearn.model_selection import train_test_split\n",
+    "from sklearn.metrics import accuracy_score"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "18db4a6d-c791-48a2-bb83-0854f91b7c05",
+   "metadata": {},
+   "source": [
+    "### Getting the data ready\n",
+    "we need a features matrix, (by convention we'll call it X), which is shape = (n_samples, n_features), for us n_features will be 2\n",
+    "and a values matrix (y), which will be length n_samples and just be the species name for each sample"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "36d6a8c9-70e1-4b72-b230-a2714b4c7436",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "id": "f15e67ff-2144-48fb-bab2-098cac2f05e5",
+   "metadata": {},
+   "source": [
+    "The steps for doing this kind of classification are:\n",
+    "1. Split the data into training data and testing data\n",
+    "2. Fit the model\n",
+    "3. Predict some testing data and evaluate the model's performance"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "851ca07a-d6a6-453d-b1e5-8bfaa6016065",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "id": "07f5bbbe-ab34-4fbc-9fd6-a2a72f86cf40",
+   "metadata": {},
+   "source": [
+    "### Visualizing the decision boundary\n",
+    "SVM works by forming a decision boundary in the feature space that splits points into each class. In this case the feature space is just two dimensional, so it's easy to visualize. But in principle this can be a high dimensional feature space"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "d9d67561-7a0f-4956-b503-0ea4e561037b",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.14.7"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
